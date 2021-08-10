@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Добавить комплектацию:</h2>
+    <br>
+
+    <form action="saveNewComplectation" method="post">
+        <input th:type="hidden" th:name="model" th:value="${model}"/>
+        <div th:each="complect: ${complectations}">
+            <label th:text="${complect.name}"></label>
+            <input type="checkbox" th:name="complectNames" th:value="${complect.name}"/>
+        </div>
+        <br>
+        <input type="submit" value="сохранить"/>
+    </form>
+</body>
+</html>

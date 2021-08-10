@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h2>Комплектации для:</h2>
+    <h2 th:text="${car}"></h2>
+    <br>
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Цвет</th>
+            <th>Обогрев</th>
+            <th>Аудиосистема</th>
+            <th>Опция</th>
+        </tr>
+        <tr th:each="compl: ${complectations}">
+            <td th:text="${compl.name}"></td>
+            <td th:text="${compl.price}"></td>
+            <td th:text="${compl.color}"></td>
+            <td th:text="${compl.preheating}"></td>
+            <td th:text="${compl.audio_system}"></td>
+            <td>
+                <form action="/updateComplectation" method="post">
+                    <input th:type="hidden" th:name="car_model" th:value="${car}"/>
+                    <input type="hidden"  th:name="complect_id" th:value="${compl.id}"/>
+                    <input type="submit" value="изменить"/>
+                </form>
+                <form action="/deleteComplectation" method="get">
+                    <input th:type="hidden" th:name="complect" th:value="${compl.name}"/>
+                    <input th:type="hidden" th:name="car_model" th:value="${car}"/>
+                    <input type="submit" value="удалить"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <form action="/addNewComplectation" method="get">
+        <input th:type="hidden" th:name="car_model" th:value="${car}"/>
+        <input type="submit" value="добавить"/>
+    </form>
+    <br>
+    <button type="button" onclick="window.location.href='/'">на главную</button>
+</body>
+</html>

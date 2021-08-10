@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home page</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+    <h2>Список моделей:</h2>
+    <br>
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Действие</th>
+        </tr>
+        <tr th:each="car: ${car_models}">
+            <td th:text="${car.model}"></td>
+            <td>
+                <a th:href="@{/showComplectation/{car}(car=${car.model})}">комплектации</a>
+            </td>
+            <td>
+                <form action="/deleteModel" method="get">
+                    <input th:type="hidden" th:name="model" th:value="${car.model}"/>
+                    <input type="submit" value="удалить модель"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <input type="button" value="Добавить модель" onclick="window.location.href = '/addModel'">
+</body>
+</html>

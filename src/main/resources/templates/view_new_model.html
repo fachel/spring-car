@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>New Model</title>
+</head>
+<body>
+    <h2 th:text="${action}"></h2>
+    <form method="post" action="/saveModel" th:object="${car}">
+        <label for="model_">Модель:</label>
+        <input type="text" th:field="*{model}" id="model_">
+        <br>
+        <br>
+        <input type="submit" value="ок"/>
+    </form>
+</body>
+</html>

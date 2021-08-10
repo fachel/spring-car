@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Комплектация</h2>
+    <form method="post" action="/saveChanges" th:object="${complect}">
+        <input th:type="hidden" th:name="car_model" th:value="${car_model}"/>
+        <input type="hidden" th:field="*{id}"/>
+        Название <input type="text" th:field="*{name}"/>
+        <br><br>
+        Цена <input type="text" th:field="*{price}"/>
+        <br><br>
+        Цвет(а) <input type="text" th:field="*{color}"/>
+        <br><br>
+        Обогрев <input type="text" th:field="*{preheating}"/>
+        <br><br>
+        Аудиосистема <input type="text" th:field="*{audio_system}"/>
+        <br><br>
+        <input type="submit" value="сохранить изменения">
+    </form>
+</body>
+</html>
